@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-const SECRET_CONSTANTS = require('./utils/private/constants')
+require('dotenv').config();
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -11,7 +11,7 @@ app.use((req, res, next) => {
 });
 app.use(express.json());
 
-mongoose.connect(SECRET_CONSTANTS.DB_CONNECT,
+mongoose.connect(process.env.DB_CONNECT,
     {
         useNewUrlParser: true,
         useUnifiedTopology: true 
